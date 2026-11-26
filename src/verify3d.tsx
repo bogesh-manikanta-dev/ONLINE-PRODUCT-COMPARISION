@@ -1,6 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
+// Warm-up only: preload the module graph the viewer imports dynamically so the
+// cold dev-server import does not delay first paint during verification.
+import 'three';
+import 'three/examples/jsm/environments/RoomEnvironment.js';
+import 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import type { ProductDTO } from '../shared/types.ts';
 import { Product3DViewer } from './components/Product3DViewer.tsx';
 
@@ -106,7 +111,7 @@ function Harness() {
 
         <section>
           <h2 className="mb-3 text-sm uppercase tracking-widest text-slate-400">Card variant</h2>
-          <div className="max-w-sm">
+          <div className="relative aspect-[4/3] w-full max-w-sm">
             <Product3DViewer product={supported} variant="card" />
           </div>
         </section>
