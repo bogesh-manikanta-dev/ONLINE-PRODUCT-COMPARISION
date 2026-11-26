@@ -144,7 +144,7 @@ describe('catalogue expansion — comparability', () => {
       for (const key of numericKeys) {
         const raw = product.specs[key];
         expect(raw, `${product.slug} has numeric spec "${key}"`).toBeDefined();
-        const parsed = normalizeNumericSpec(raw, key);
+        const parsed = normalizeNumericSpec(raw, key, key);
         // "Corded (continuous)" is a legitimate non-numeric answer for runtime.
         if (parsed === null) {
           expect(raw, `${product.slug} "${key}" is an allowed non-numeric value`).toMatch(/^[A-Za-z]/);
