@@ -66,7 +66,7 @@ const unsupported = makeProduct({
 });
 
 function simulateDrag() {
-  const host = document.querySelector('[role="application"]') as HTMLElement | null;
+  const host = document.querySelector('#viewer-supported [role="application"]') as HTMLElement | null;
   if (!host) return;
   const rect = host.getBoundingClientRect();
   const base = {
@@ -97,21 +97,21 @@ function Harness() {
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
         <section>
           <h2 className="mb-3 text-sm uppercase tracking-widest text-slate-400">Supported product</h2>
-          <div className="max-w-md">
+          <div id="viewer-supported" className="max-w-md">
             <Product3DViewer product={supported} variant="detail" />
           </div>
         </section>
 
         <section>
           <h2 className="mb-3 text-sm uppercase tracking-widest text-slate-400">Unsupported product</h2>
-          <div className="max-w-md">
+          <div id="viewer-unsupported" className="max-w-md">
             <Product3DViewer product={unsupported} variant="detail" />
           </div>
         </section>
 
         <section>
           <h2 className="mb-3 text-sm uppercase tracking-widest text-slate-400">Card variant</h2>
-          <div className="relative aspect-[4/3] w-full max-w-sm">
+          <div id="viewer-card" className="relative aspect-[4/3] w-full max-w-sm">
             <Product3DViewer product={supported} variant="card" />
           </div>
         </section>
