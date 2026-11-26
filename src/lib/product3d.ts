@@ -14,7 +14,7 @@
 /** Metallic gold that the schema and design system use as the default finish. */
 export const DEFAULT_FINISH_HEX = '#D4AF37';
 
-type StudioGeometry =
+export type StudioGeometry =
   | 'phone'
   | 'laptop'
   | 'television'
