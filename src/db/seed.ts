@@ -23,10 +23,11 @@ import {
   systemSettings,
 } from './schema.ts';
 
-// Bumped to v2 for the Phase 4 catalogue expansion: existing installations
-// re-run the idempotent sync so the 19 new demo products appear, while every
-// existing product row is upserted by slug and therefore preserved.
-const PHASE3_SEED_VERSION = 'v2';
+// Bumped to v3 for the catalogue coverage correction: Bags, Vacuum Cleaners and
+// Air Purifiers each gained a second product so they are actually comparable.
+// Existing installations re-run the idempotent sync, and every existing row is
+// upserted by slug, so no stored product is replaced or removed.
+const PHASE3_SEED_VERSION = 'v3';
 
 let seedPromise: Promise<void> | null = null;
 
