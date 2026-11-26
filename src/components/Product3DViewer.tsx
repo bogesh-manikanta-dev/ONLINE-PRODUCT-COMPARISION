@@ -494,7 +494,11 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (status !== 'ready') return;
     dragRef.current = { id: event.pointerId, x: event.clientX, y: event.clientY };
-    event.currentTarget.setPointerCapture?.(event.pointerId);
+    try {
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+    } catch {
+      // Some browsers reject capture for inactive pointers; dragging still works.
+    }
   };
 
   const onPointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -514,7 +518,11 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
     if (dragRef.current?.id !== event.pointerId) return;
     dragRef.current = null;
     setYawLabel(Math.round(yawRef.current));
-    event.currentTarget.releasePointerCapture?.(event.pointerId);
+    try {
+      event.currentTarget.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // Capture may already be gone; nothing to release.
+    }
   };
 
   const resetView = () => {
