@@ -64,18 +64,27 @@ for (const def of EXPANSION_SPEC_DEFS) {
   specKeysByCategory.get(def.categorySlug)!.add(def.key);
 }
 
-// Slugs of the products already shipped by the Phase 3 catalogue. Parsed from
-// the literal array so a new product can never silently upsert over an existing
-// record (the seeder upserts products by slug).
-const legacyProductSlugs = uniqueValues(
-  seedSource.slice(seedSource.indexOf('const phase3Products'), seedSource.indexOf('...EXPANSION_PRODUCTS')),
-  /^ {6}slug: '([^']+)'/gm,
+// Products already shipped by the Phase 3 catalogue. Parsed from the literal
+// array so a new product can never silently upsert over an existing record
+// (the seeder upserts products by slug).
+const legacyProductRegion = seedSource.slice(
+  seedSource.indexOf('const phase3Products'),
+  seedSource.indexOf('...EXPANSION_PRODUCTS'),
 );
+const legacyProductSlugs = uniqueValues(legacyProductRegion, /^ {6}slug: '([^']+)'/gm);
+const legacyCountByCategory = new Map<string, number>();
+for (const match of legacyProductRegion.matchAll(/^ {6}categorySlug: '([^']+)'/gm)) {
+  legacyCountByCategory.set(match[1], (legacyCountByCategory.get(match[1]) ?? 0) + 1);
+}
+
+/** Categories that shipped with a single product and could not be compared. */
+const THIN_CATEGORIES: string[] = ['bags', 'vacuum-cleaners', 'air-purifiers'];
 
 describe('catalogue expansion — dataset shape', () => {
-  it('adds between 14 and 20 products (additive only)', () => {
+  it('adds a meaningful number of products (additive only)', () => {
+    // P2 added 19; the coverage correction added 3 more (Bags, Vacuum Cleaners
+    // and Air Purifiers). The lower bound guards against accidental deletions.
     expect(EXPANSION_PRODUCTS.length).toBeGreaterThanOrEqual(14);
-    expect(EXPANSION_PRODUCTS.length).toBeLessThanOrEqual(20);
   });
 
   it('uses unique, URL-safe slugs and unique product names', () => {
@@ -98,7 +107,42 @@ describe('catalogue expansion — dataset shape', () => {
     expect(legacyProductSlugs.size + EXPANSION_PRODUCTS.length, 'total unique products').toBeGreaterThanOrEqual(45);
   });
 
-  it('never fabricates ratings or customer reviews', () => {    for (const product of EXPANSION_PRODUCTS) {
+  it('gives every previously thin category a second comparable product', () => {
+    // Bags, Vacuum Cleaners and Air Purifiers each shipped with exactly one
+    // product, so the comparison engine had nothing to compare. Every one of
+    // them must now hold at least two products, without losing the original.
+    for (const category of THIN_CATEGORIES) {
+      const added = EXPANSION_PRODUCTS.filter((product) => product.categorySlug === category);
+      expect(added.length, `${category} gained at least one new product`).toBeGreaterThanOrEqual(1);
+      const legacyCount = legacyCountByCategory.get(category) ?? 0;
+      expect(legacyCount, `${category} existing products are preserved`).toBeGreaterThanOrEqual(1);
+      expect(legacyCount + added.length, `${category} is now comparable`).toBeGreaterThanOrEqual(2);
+    }
+  });
+
+  it('adds quality-checked products to the thin categories', () => {
+    const added = EXPANSION_PRODUCTS.filter((product) => THIN_CATEGORIES.includes(product.categorySlug));
+    expect(added.length, 'one addition per thin category').toBeGreaterThanOrEqual(3);
+
+    const slugs = added.map((product) => product.slug);
+    const models = added.map((product) => product.modelNumber);
+    expect(new Set(slugs).size, 'unique slugs').toBe(slugs.length);
+    expect(new Set(models).size, 'unique model numbers').toBe(models.length);
+
+    for (const product of added) {
+      expect(legacyProductSlugs.has(product.slug), `${product.slug} must not reuse a legacy slug`).toBe(false);
+      expect(product.basePrice, `${product.slug} price`).toBeGreaterThan(0);
+      expect(product.description.length, `${product.slug} description`).toBeGreaterThan(60);
+      // Comparable specifications: every key registered for the category must
+      // be present, otherwise the comparison engine silently loses an attribute.
+      for (const key of CATEGORY_SPEC_KEYS[product.categorySlug] ?? []) {
+        expect(product.specs[key], `${product.slug} is missing the "${key}" specification`).toBeDefined();
+      }
+    }
+  });
+
+  it('never fabricates ratings or customer reviews', () => {
+    for (const product of EXPANSION_PRODUCTS) {
       expect(product.rating, `${product.slug} rating`).toBe(0);
       expect(product.reviewCount, `${product.slug} reviewCount`).toBe(0);
     }
