@@ -110,7 +110,7 @@ export function AdminCsvImportPage({
               <Download className="h-4 w-4" />
               Download Sample CSV Template
             </Button>
-            <label className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-slate-700 bg-[#070D1A] px-3.5 text-xs font-semibold text-slate-200 hover:border-slate-500 hover:text-white transition-colors">
+            <label className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-slate-700 bg-[#0B0A08] px-3.5 text-xs font-semibold text-slate-200 hover:border-slate-500 hover:text-white transition-colors">
               <Upload className="h-4 w-4 text-sky-400" />
               <span>Upload .csv File</span>
               <input type="file" accept=".csv,text/csv" onChange={handleFileUpload} className="sr-only" />
@@ -126,7 +126,7 @@ export function AdminCsvImportPage({
           onChange={(e) => setCsvContent(e.target.value)}
           rows={10}
           aria-label="CSV product import content"
-          className="w-full rounded-xl border border-slate-700/80 bg-[#070D1A] p-3.5 font-mono text-xs text-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+          className="w-full rounded-xl border border-slate-700/80 bg-[#0B0A08] p-3.5 font-mono text-xs text-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
         />
 
         <div className="flex flex-wrap gap-3">
@@ -269,7 +269,7 @@ export function AdminUsersPage({
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-[#080F1E] border-b border-slate-800 text-xs text-slate-400">
+              <thead className="bg-[#0C0B09] border-b border-slate-800 text-xs text-slate-400">
                 <tr>
                   <th className="px-4 py-3 text-left font-semibold">Name</th>
                   <th className="px-4 py-3 text-left font-semibold">Email</th>
@@ -597,7 +597,7 @@ export function AdminAuditLogsPage({
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
-              <thead className="bg-[#080F1E] border-b border-slate-800 text-slate-400">
+              <thead className="bg-[#0C0B09] border-b border-slate-800 text-slate-400">
                 <tr>
                   <th className="px-4 py-3 text-left font-semibold">Timestamp</th>
                   <th className="px-4 py-3 text-left font-semibold">Actor</th>

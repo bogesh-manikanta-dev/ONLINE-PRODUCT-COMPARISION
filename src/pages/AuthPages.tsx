@@ -92,7 +92,7 @@ export function AuthPage({
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[340px] w-[540px] rounded-full bg-sky-500/10 blur-[120px]"
       />
       <div className="relative mx-auto max-w-md">
-        <Card className="p-6 sm:p-8 bg-[#0B1222]/90 backdrop-blur-xl border-slate-700/80 shadow-2xl">
+        <Card className="p-6 sm:p-8 bg-[#0F0E0B]/90 backdrop-blur-xl border-slate-700/80 shadow-2xl">
           <div className="mb-6">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 mb-2">
               {mode === 'signup' ? <UserPlus className="h-4 w-4" /> : <LogIn className="h-4 w-4" />}
@@ -225,7 +225,7 @@ export function AuthPage({
             {showAdminClaim && (
               <form
                 onSubmit={handleAdminClaim}
-                className="mt-3 space-y-3 rounded-xl bg-[#070D1A] p-4 border border-slate-800"
+                className="mt-3 space-y-3 rounded-xl bg-[#0B0A08] p-4 border border-slate-800"
               >
                 <p className="text-xs text-slate-400 leading-relaxed">
                   {adminConfigured === false

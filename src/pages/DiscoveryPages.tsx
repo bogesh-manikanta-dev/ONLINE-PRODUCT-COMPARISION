@@ -240,7 +240,7 @@ export function DiscoveryPage({
             className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               !selectedCategorySlug
                 ? 'border-sky-400/70 bg-sky-500/15 text-sky-300'
-                : 'border-slate-800 bg-[#0B1222] text-slate-300 hover:border-slate-700 hover:text-white'
+                : 'border-slate-800 bg-[#0F0E0B] text-slate-300 hover:border-slate-700 hover:text-white'
             }`}
           >
             All Categories
@@ -259,7 +259,7 @@ export function DiscoveryPage({
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
                 selectedCategorySlug === c.slug
                   ? 'border-sky-400/70 bg-sky-500/15 text-sky-300'
-                  : 'border-slate-800 bg-[#0B1222] text-slate-300 hover:border-slate-700 hover:text-white'
+                  : 'border-slate-800 bg-[#0F0E0B] text-slate-300 hover:border-slate-700 hover:text-white'
               }`}
             >
               {c.name} ({c.productCount ?? 0})
@@ -270,7 +270,7 @@ export function DiscoveryPage({
 
       {/* Category Spec Overview when in Category Listing */}
       {mode === 'category' && activeCategory && activeCategory.specDefinitions && (
-        <div className="rounded-xl border border-slate-800/90 bg-[#0B1222] p-5">
+        <div className="rounded-xl border border-slate-800/90 bg-[#0F0E0B] p-5">
           <h2 className="font-display text-sm font-semibold text-white mb-1.5">
             Standardized Comparison Attributes for {activeCategory.name}
           </h2>
@@ -315,7 +315,7 @@ export function DiscoveryPage({
                 />
               </div>
               {suggestions.length > 0 && q.trim().length >= 2 && (
-                <div className="mt-2 rounded-lg border border-slate-800 bg-[#070D1A] p-1.5 space-y-1">
+                <div className="mt-2 rounded-lg border border-slate-800 bg-[#0B0A08] p-1.5 space-y-1">
                   <div className="px-2 py-0.5 text-[11px] font-medium text-slate-400">
                     Quick Matches
                   </div>
@@ -514,7 +514,7 @@ export function DiscoveryPage({
 
         {/* Results Grid */}
         <div className="lg:col-span-9 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-800/90 bg-[#0B1222] px-4 py-3">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-slate-800/90 bg-[#0F0E0B] px-4 py-3">
             <div className="text-xs text-slate-400">
               Showing page <span className="font-mono font-semibold text-white">{page}</span> of{' '}
               <span className="font-mono font-semibold text-white">{totalPages}</span>
@@ -610,7 +610,7 @@ export function DiscoveryPage({
                     key={rp.id}
                     type="button"
                     onClick={() => navigate(`/products/${rp.slug}`)}
-                    className="flex items-center gap-3 rounded-xl border border-slate-800/80 bg-[#0B1222] p-3 text-left hover:border-sky-500/50 transition-colors cursor-pointer"
+                    className="flex items-center gap-3 rounded-xl border border-slate-800/80 bg-[#0F0E0B] p-3 text-left hover:border-sky-500/50 transition-colors cursor-pointer"
                   >
                     <div className="h-12 w-16 rounded-lg overflow-hidden bg-slate-900 shrink-0">
                       <ProductImage src={rp.primaryImage} alt={rp.name} className="h-full w-full" />

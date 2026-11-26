@@ -64,7 +64,7 @@ class AppErrorBoundary extends Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-[#060B16] p-6">
+        <div className="min-h-screen flex items-center justify-center bg-[#070705] p-6">
           <Card className="max-w-md p-8 text-center space-y-4">
             <h1 className="font-display text-2xl font-bold text-white">Something went wrong</h1>
             <p className="text-sm text-slate-400">{this.state.message}</p>

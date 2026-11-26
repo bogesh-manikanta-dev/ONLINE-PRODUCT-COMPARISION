@@ -231,24 +231,24 @@ export function PriceHistoryPage({
                   <AreaChart data={chartData}>
                     <defs>
                       <linearGradient id="priceIntelGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#38BDF8" stopOpacity={0.35} />
-                        <stop offset="95%" stopColor="#38BDF8" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#D9B968" stopOpacity={0.35} />
+                        <stop offset="95%" stopColor="#D9B968" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-                    <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94A3B8' }} stroke="#334155" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#3A342C" />
+                    <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#A79E90' }} stroke="#514A41" />
                     <YAxis
                       domain={['auto', 'auto']}
-                      tick={{ fontSize: 11, fill: '#94A3B8' }}
-                      stroke="#334155"
+                      tick={{ fontSize: 11, fill: '#A79E90' }}
+                      stroke="#514A41"
                       tickFormatter={(v) => formatCurrency(Number(v), product?.currency || 'INR')}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0B1222',
-                        borderColor: '#334155',
+                        backgroundColor: '#0F0E0B',
+                        borderColor: '#514A41',
                         borderRadius: '0.75rem',
-                        color: '#F1F5F9',
+                        color: '#F3EEE4',
                         fontSize: '12px',
                       }}
                       formatter={(val: any, _name, item) => [
@@ -259,10 +259,10 @@ export function PriceHistoryPage({
                     <Area
                       type="monotone"
                       dataKey="price"
-                      stroke="#38BDF8"
+                      stroke="#D9B968"
                       strokeWidth={2.5}
                       fill="url(#priceIntelGrad)"
-                      dot={{ r: 4, fill: '#38BDF8' }}
+                      dot={{ r: 4, fill: '#D9B968' }}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -285,7 +285,7 @@ export function PriceHistoryPage({
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
-                  <thead className="bg-[#080F1E] border-b border-slate-800 text-xs text-slate-400">
+                  <thead className="bg-[#0C0B09] border-b border-slate-800 text-xs text-slate-400">
                     <tr>
                       <th className="px-5 py-3 text-left font-semibold">Seller</th>
                       <th className="px-5 py-3 text-left font-semibold">Data Source</th>
@@ -327,7 +327,7 @@ export function PriceHistoryPage({
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-[#080F1E] border-b border-slate-800 text-xs text-slate-400">
+                <thead className="bg-[#0C0B09] border-b border-slate-800 text-xs text-slate-400">
                   <tr>
                     <th className="px-5 py-3 text-left font-semibold">Observed Date</th>
                     <th className="px-5 py-3 text-left font-semibold">Seller</th>

@@ -32,7 +32,7 @@ export function CartDrawer({ navigate }: { navigate: (to: string) => void }) {
             transition={{ duration: 0.22, ease: 'easeOut' }}
             onClick={(e) => e.stopPropagation()}
             aria-label="Shopping Cart Drawer"
-            className="flex h-full w-full max-w-md flex-col border-l border-slate-800 bg-[#080E1C] text-slate-100 shadow-2xl"
+            className="flex h-full w-full max-w-md flex-col border-l border-slate-800 bg-[#0B0A09] text-slate-100 shadow-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
@@ -70,7 +70,7 @@ export function CartDrawer({ navigate }: { navigate: (to: string) => void }) {
             <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3">
               {cart.items.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center text-center py-12 space-y-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#0B1222] text-slate-500">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#0F0E0B] text-slate-500">
                     <ShoppingBag className="h-6 w-6" />
                   </div>
                   <div className="space-y-1">
@@ -87,12 +87,12 @@ export function CartDrawer({ navigate }: { navigate: (to: string) => void }) {
                 cart.items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex gap-3.5 rounded-xl border border-slate-800/90 bg-[#0B1222] p-3"
+                    className="flex gap-3.5 rounded-xl border border-slate-800/90 bg-[#0F0E0B] p-3"
                   >
                     <button
                       type="button"
                       onClick={() => go(`/products/${item.productSlug}`)}
-                      className="h-18 w-20 shrink-0 overflow-hidden rounded-lg bg-[#060B16] border border-slate-800 cursor-pointer"
+                      className="h-18 w-20 shrink-0 overflow-hidden rounded-lg bg-[#070705] border border-slate-800 cursor-pointer"
                     >
                       <ProductImage src={item.primaryImage} alt={item.productName} className="h-full w-full" />
                     </button>
@@ -122,7 +122,7 @@ export function CartDrawer({ navigate }: { navigate: (to: string) => void }) {
                       </div>
 
                       <div className="flex items-center justify-between pt-1">
-                        <div className="inline-flex items-center rounded-lg border border-slate-700/80 bg-[#070D1A]">
+                        <div className="inline-flex items-center rounded-lg border border-slate-700/80 bg-[#0B0A08]">
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -161,7 +161,7 @@ export function CartDrawer({ navigate }: { navigate: (to: string) => void }) {
 
             {/* Footer Totals */}
             {cart.items.length > 0 && (
-              <div className="border-t border-slate-800 bg-[#060B16] p-5 space-y-4">
+              <div className="border-t border-slate-800 bg-[#070705] p-5 space-y-4">
                 <dl className="space-y-1.5 text-xs">
                   <div className="flex justify-between text-slate-400">
                     <dt>Subtotal</dt>

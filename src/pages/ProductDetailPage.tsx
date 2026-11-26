@@ -198,7 +198,7 @@ export function ProductDetailPage({
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
         {/* Image Gallery */}
         <div className="lg:col-span-6 space-y-3">
-          <div className="relative overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0B1222] aspect-[4/3] group">
+          <div className="relative overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0F0E0B] aspect-[4/3] group">
             <ProductImage
               src={currentImg?.url}
               alt={currentImg?.alt || product.name}
@@ -210,7 +210,7 @@ export function ProductDetailPage({
               type="button"
               onClick={() => setZoomed((z) => !z)}
               aria-label={zoomed ? 'Reset image zoom' : 'Zoom product image'}
-              className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700/80 bg-[#060B16]/80 backdrop-blur-md text-slate-200 hover:text-white hover:border-sky-400/60 transition-colors cursor-pointer"
+              className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700/80 bg-[#070705]/80 backdrop-blur-md text-slate-200 hover:text-white hover:border-sky-400/60 transition-colors cursor-pointer"
             >
               {zoomed ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </button>
@@ -275,7 +275,7 @@ export function ProductDetailPage({
               {product.name}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-6 rounded-xl border border-slate-800/90 bg-[#0B1222] p-4 mb-5">
+            <div className="flex flex-wrap items-center gap-6 rounded-xl border border-slate-800/90 bg-[#0F0E0B] p-4 mb-5">
               <div>
                 <div className="text-xs text-slate-400">Recorded Base Price</div>
                 <div className="font-mono text-3xl font-bold text-white tabular-nums mt-0.5">
@@ -311,7 +311,7 @@ export function ProductDetailPage({
 
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center rounded-xl border border-slate-700 bg-[#070D1A] p-1">
+              <div className="inline-flex items-center rounded-xl border border-slate-700 bg-[#0B0A08] p-1">
                 <button
                   type="button"
                   onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -479,7 +479,7 @@ export function ProductDetailPage({
                 </dl>
 
                 {offer.additionalFeesNote && (
-                  <p className="text-xs text-slate-300 bg-[#070D1A] border border-slate-800 rounded-lg px-3 py-2">
+                  <p className="text-xs text-slate-300 bg-[#0B0A08] border border-slate-800 rounded-lg px-3 py-2">
                     Note: {offer.additionalFeesNote}
                   </p>
                 )}
@@ -569,24 +569,24 @@ export function ProductDetailPage({
                   <AreaChart data={chartData}>
                     <defs>
                       <linearGradient id="pdpPriceGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#38BDF8" stopOpacity={0.35} />
-                        <stop offset="95%" stopColor="#38BDF8" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#D9B968" stopOpacity={0.35} />
+                        <stop offset="95%" stopColor="#D9B968" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-                    <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#94A3B8' }} stroke="#334155" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#3A342C" />
+                    <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#A79E90' }} stroke="#514A41" />
                     <YAxis
                       domain={['auto', 'auto']}
-                      tick={{ fontSize: 11, fill: '#94A3B8' }}
-                      stroke="#334155"
+                      tick={{ fontSize: 11, fill: '#A79E90' }}
+                      stroke="#514A41"
                       tickFormatter={(v) => formatCurrency(Number(v), product.currency)}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0B1222',
-                        borderColor: '#334155',
+                        backgroundColor: '#0F0E0B',
+                        borderColor: '#514A41',
                         borderRadius: '0.75rem',
-                        color: '#F1F5F9',
+                        color: '#F3EEE4',
                         fontSize: '12px',
                       }}
                       formatter={(val: any) => [
@@ -597,10 +597,10 @@ export function ProductDetailPage({
                     <Area
                       type="monotone"
                       dataKey="price"
-                      stroke="#38BDF8"
+                      stroke="#D9B968"
                       strokeWidth={2.5}
                       fill="url(#pdpPriceGrad)"
-                      dot={{ r: 3.5, fill: '#38BDF8' }}
+                      dot={{ r: 3.5, fill: '#D9B968' }}
                     />
                   </AreaChart>
                 </ResponsiveContainer>

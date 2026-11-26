@@ -177,7 +177,7 @@ export function AdminInventoryPage({
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
-                <thead className="bg-[#080F1E] border-b border-slate-800 text-slate-400">
+                <thead className="bg-[#0C0B09] border-b border-slate-800 text-slate-400">
                   <tr>
                     <th className="px-4 py-3 text-left font-semibold">Product</th>
                     <th className="px-4 py-3 text-right font-semibold">Price (INR)</th>
@@ -257,7 +257,7 @@ export function AdminInventoryPage({
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
-                <thead className="bg-[#080F1E] border-b border-slate-800 text-slate-400">
+                <thead className="bg-[#0C0B09] border-b border-slate-800 text-slate-400">
                   <tr>
                     <th className="px-4 py-2.5 text-left font-semibold">Time</th>
                     <th className="px-4 py-2.5 text-left font-semibold">Product</th>
@@ -584,7 +584,7 @@ export function AdminReturnsPage({
                 </div>
               </div>
 
-              <p className="text-xs text-slate-300 bg-[#070D1A] border border-slate-800 rounded-lg px-3 py-2">
+              <p className="text-xs text-slate-300 bg-[#0B0A08] border border-slate-800 rounded-lg px-3 py-2">
                 Reason: {ret.reason}
               </p>
 
@@ -821,7 +821,7 @@ export function AdminRecommendationsConfigPage({
                         className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium cursor-pointer ${
                           checked
                             ? 'border-sky-400 bg-sky-500/15 text-sky-200'
-                            : 'border-slate-800 bg-[#070D1A] text-slate-300'
+                            : 'border-slate-800 bg-[#0B0A08] text-slate-300'
                         }`}
                       >
                         <input

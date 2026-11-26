@@ -50,7 +50,7 @@ export function CartPage({ navigate }: { navigate: (to: string) => void }) {
 
       {cart.items.length === 0 ? (
         <Card className="p-12 text-center space-y-4">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#070D1A] text-slate-500">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-800 bg-[#0B0A08] text-slate-500">
             <ShoppingBag className="h-7 w-7" />
           </div>
           <h2 className="font-display text-xl font-bold text-white">Your shopping cart is empty</h2>
@@ -74,7 +74,7 @@ export function CartPage({ navigate }: { navigate: (to: string) => void }) {
                 <button
                   type="button"
                   onClick={() => navigate(`/products/${item.productSlug}`)}
-                  className="h-24 w-28 shrink-0 overflow-hidden rounded-xl border border-slate-800 bg-[#070D1A] cursor-pointer"
+                  className="h-24 w-28 shrink-0 overflow-hidden rounded-xl border border-slate-800 bg-[#0B0A08] cursor-pointer"
                 >
                   <ProductImage src={item.primaryImage} alt={item.productName} className="h-full w-full" />
                 </button>
@@ -99,7 +99,7 @@ export function CartPage({ navigate }: { navigate: (to: string) => void }) {
                     {formatCurrency(item.lineSubtotal, item.currency)}
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="inline-flex items-center rounded-lg border border-slate-700 bg-[#070D1A]">
+                    <div className="inline-flex items-center rounded-lg border border-slate-700 bg-[#0B0A08]">
                       <button
                         type="button"
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -375,7 +375,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
                     ? 'border-sky-400 bg-sky-500/15 text-sky-300'
                     : done
                       ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-                      : 'border-slate-800 bg-[#0B1222] text-slate-500'
+                      : 'border-slate-800 bg-[#0F0E0B] text-slate-500'
                 }`}
               >
                 {label}
@@ -442,7 +442,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
                   className={`rounded-xl border p-4 text-left transition-all cursor-pointer ${
                     selectedAddressId === addr.id
                       ? 'border-sky-400 bg-sky-500/10'
-                      : 'border-slate-800 bg-[#070D1A] hover:border-slate-600'
+                      : 'border-slate-800 bg-[#0B0A08] hover:border-slate-600'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -463,7 +463,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
                 className={`rounded-xl border p-4 text-left transition-all flex items-center gap-3 cursor-pointer ${
                   selectedAddressId === 'NEW'
                     ? 'border-sky-400 bg-sky-500/10'
-                    : 'border-slate-800 bg-[#070D1A] hover:border-slate-600'
+                    : 'border-slate-800 bg-[#0B0A08] hover:border-slate-600'
                 }`}
               >
                 <MapPin className="h-5 w-5 text-sky-400" />
@@ -591,7 +591,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
               className={`rounded-xl border p-5 text-left transition-all cursor-pointer ${
                 deliveryMethod === 'STANDARD'
                   ? 'border-sky-400 bg-sky-500/10'
-                  : 'border-slate-800 bg-[#070D1A] hover:border-slate-600'
+                  : 'border-slate-800 bg-[#0B0A08] hover:border-slate-600'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -616,7 +616,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
               className={`rounded-xl border p-5 text-left transition-all cursor-pointer ${
                 deliveryMethod === 'EXPRESS'
                   ? 'border-sky-400 bg-sky-500/10'
-                  : 'border-slate-800 bg-[#070D1A] hover:border-slate-600'
+                  : 'border-slate-800 bg-[#0B0A08] hover:border-slate-600'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
@@ -652,7 +652,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
         <Card className="p-6 sm:p-8 space-y-6">
           <h2 className="font-display text-xl font-bold text-white">Step 4: Order Summary Verification</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4 space-y-2">
+            <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4 space-y-2">
               <div className="text-xs font-semibold text-sky-400 uppercase tracking-wider">Shipping To</div>
               {chosenAddress && (
                 <div className="text-sm text-slate-200 space-y-0.5">
@@ -669,7 +669,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
               </div>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4 space-y-2">
+            <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4 space-y-2">
               <div className="text-xs font-semibold text-sky-400 uppercase tracking-wider">Server-Verified Totals</div>
               <dl className="space-y-1.5 text-sm">
                 <div className="flex justify-between text-slate-400">
@@ -747,7 +747,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
                 className={`rounded-xl border p-5 text-left transition-all cursor-pointer space-y-2 ${
                   paymentMode === mode.id
                     ? 'border-sky-400 bg-sky-500/10'
-                    : 'border-slate-800 bg-[#070D1A] hover:border-slate-600'
+                    : 'border-slate-800 bg-[#0B0A08] hover:border-slate-600'
                 }`}
               >
                 <mode.icon className="h-5 w-5 text-sky-400" />
@@ -790,7 +790,7 @@ export function CheckoutPage({ navigate }: { navigate: (to: string) => void }) {
             </p>
           </div>
 
-          <div className="mx-auto max-w-md rounded-xl border border-slate-800 bg-[#070D1A] p-4 text-left text-xs space-y-1.5">
+          <div className="mx-auto max-w-md rounded-xl border border-slate-800 bg-[#0B0A08] p-4 text-left text-xs space-y-1.5">
             <div className="flex justify-between">
               <span className="text-slate-400">Payment Mode</span>
               <span className="font-mono text-slate-200">{placedOrder.paymentMode}</span>

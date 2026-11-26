@@ -141,7 +141,7 @@ export function OrdersListPage({ navigate }: { navigate: (to: string) => void })
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {order.items.map((item) => (
-                  <div key={item.id} className="flex items-center gap-3 rounded-xl bg-[#070D1A] p-2.5 border border-slate-800/70">
+                  <div key={item.id} className="flex items-center gap-3 rounded-xl bg-[#0B0A08] p-2.5 border border-slate-800/70">
                     <div className="h-12 w-14 rounded-lg overflow-hidden bg-slate-900 shrink-0">
                       <ProductImage src={item.imageSnapshot} alt={item.productNameSnapshot} className="h-full w-full" />
                     </div>
@@ -319,7 +319,7 @@ export function OrderDetailPage({
       </div>
 
       {/* Simulated Tracking Notice */}
-      <div className="rounded-xl border border-slate-800 bg-[#0B1222] px-4 py-3 text-xs text-slate-400 flex items-center gap-2.5">
+      <div className="rounded-xl border border-slate-800 bg-[#0F0E0B] px-4 py-3 text-xs text-slate-400 flex items-center gap-2.5">
         <Truck className="h-4 w-4 text-sky-400 shrink-0" />
         <span>
           Simulated Order Tracking: Delivery stages are updated inside CompareX by administrators for academic and e-commerce demonstration.
@@ -349,10 +349,10 @@ export function OrderDetailPage({
                   key={stage}
                   className={`rounded-xl border p-3 transition-all ${
                     current
-                      ? 'border-sky-400 bg-sky-500/15 shadow-[0_0_20px_-6px_rgba(56,189,248,0.5)]'
+                      ? 'border-sky-400 bg-sky-500/15 shadow-[0_0_20px_-6px_rgba(217,185,104,0.5)]'
                       : reached
                         ? 'border-emerald-500/40 bg-emerald-500/10'
-                        : 'border-slate-800 bg-[#070D1A] opacity-60'
+                        : 'border-slate-800 bg-[#0B0A08] opacity-60'
                   }`}
                 >
                   <div className="flex items-center gap-1.5 mb-1">

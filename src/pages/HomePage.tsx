@@ -152,7 +152,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
   const spotlightBrands = brands.slice(0, 10);
 
   return (
-    <div className="bg-[#060B16]">
+    <div className="bg-[#070705]">
       {/* 1. Full-Screen Cinematic Hero Section */}
       <section className="relative overflow-hidden border-b border-slate-800/80 cx-grid-bg">
         <div className="pointer-events-none absolute -top-36 left-1/3 h-96 w-96 rounded-full bg-sky-500/15 blur-[130px]" />
@@ -188,7 +188,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
               <div ref={searchBoxRef} className="relative max-w-xl">
                 <form
                   onSubmit={handleSearchSubmit}
-                  className="flex flex-col sm:flex-row gap-2 rounded-2xl border border-slate-700/80 bg-[#0B1222]/90 p-2 shadow-2xl"
+                  className="flex flex-col sm:flex-row gap-2 rounded-2xl border border-slate-700/80 bg-[#0F0E0B]/90 p-2 shadow-2xl"
                 >
                   <div className="relative flex-1 flex items-center">
                     <Search className="absolute left-3.5 h-4 w-4 text-sky-400 pointer-events-none" />
@@ -209,7 +209,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
                 </form>
 
                 {showSuggestions && suggestions.length > 0 && (
-                  <div className="absolute left-0 right-0 top-full z-30 mt-2 rounded-2xl border border-slate-700/80 bg-[#0B1222]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+                  <div className="absolute left-0 right-0 top-full z-30 mt-2 rounded-2xl border border-slate-700/80 bg-[#0F0E0B]/95 backdrop-blur-xl shadow-2xl overflow-hidden">
                     {suggestions.map((item) => (
                       <button
                         key={item.id}
@@ -270,13 +270,13 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
               transition={{ duration: 0.45 }}
               className="lg:col-span-6 relative"
             >
-              <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-slate-700/70 bg-[#0B1222] shadow-[0_30px_80px_-24px_rgba(56,189,248,0.3)]">
+              <div className="relative aspect-[16/11] w-full overflow-hidden rounded-3xl border border-slate-700/70 bg-[#0F0E0B] shadow-[0_30px_80px_-24px_rgba(217,185,104,0.3)]">
                 <ProductImage
                   src={HERO_IMAGE}
                   alt="CompareX flagship hardware studio composition"
                   className="h-full w-full"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#060B16]/85 via-transparent to-[#060B16]/35" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#070705]/85 via-transparent to-[#070705]/35" />
 
                 {FLOATING_SHOWCASE.map((card) => (
                   <motion.button
@@ -286,7 +286,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: card.delay, duration: 0.35 }}
                     onClick={() => navigate(`/products/${card.slug}`)}
-                    className={`hidden sm:flex absolute ${card.positionClass} items-center gap-3 rounded-2xl border border-slate-700/80 bg-[#060B16]/90 backdrop-blur-xl p-2.5 pr-4 text-left shadow-2xl hover:border-sky-400/70 transition-all cursor-pointer`}
+                    className={`hidden sm:flex absolute ${card.positionClass} items-center gap-3 rounded-2xl border border-slate-700/80 bg-[#070705]/90 backdrop-blur-xl p-2.5 pr-4 text-left shadow-2xl hover:border-sky-400/70 transition-all cursor-pointer`}
                   >
                     <div className="h-12 w-12 overflow-hidden rounded-xl bg-slate-900 shrink-0">
                       <ProductImage src={card.image} alt={card.name} className="h-full w-full" />
@@ -335,16 +335,16 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
                 playCue('brand');
                 navigate(`/brands/${brand.slug}`);
               }}
-              className="group relative overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0B1222] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-600 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0F0E0B] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-600 cursor-pointer"
             >
               <div
                 className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-15 blur-xl transition-opacity group-hover:opacity-35"
-                style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+                style={{ backgroundColor: brand.accentColor || '#D9B968' }}
               />
               <div className="flex items-center justify-between gap-2 mb-3">
                 <span
                   className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+                  style={{ backgroundColor: brand.accentColor || '#D9B968' }}
                 />
                 <span className="font-mono text-[11px] text-slate-500 tabular-nums">
                   {brand.productCount ?? 0} items
@@ -416,7 +416,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
               key={cat.id}
               type="button"
               onClick={() => navigate(`/category/${cat.slug}`)}
-              className="flex flex-col justify-between rounded-xl border border-slate-800/90 bg-[#0B1222] p-3.5 text-left hover:border-sky-500/60 hover:bg-[#101A30] transition-colors cursor-pointer"
+              className="flex flex-col justify-between rounded-xl border border-slate-800/90 bg-[#0F0E0B] p-3.5 text-left hover:border-sky-500/60 hover:bg-[#14120E] transition-colors cursor-pointer"
             >
               <div className="text-[11px] font-medium text-slate-500">{cat.domainGroup}</div>
               <div className="font-display text-sm font-semibold text-white mt-1 truncate">{cat.name}</div>
@@ -431,7 +431,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
       {/* 5. Comparison Engine & Smart Recommendation Engine Showcase */}
       <section className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:px-8 border-b border-slate-800/60">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <Card className="p-7 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0B1222] to-[#081022]">
+          <Card className="p-7 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0F0E0B] to-[#0C0B09]">
             <div className="space-y-3">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-sky-500/30 bg-sky-500/10 text-sky-400">
                 <Scale className="h-5 w-5" />
@@ -467,7 +467,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
             </div>
           </Card>
 
-          <Card className="p-7 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0B1222] to-[#110D28]">
+          <Card className="p-7 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0F0E0B] to-[#14100E]">
             <div className="space-y-3">
               <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-violet-400">
                 <SlidersHorizontal className="h-5 w-5" />
@@ -529,7 +529,7 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
             },
           ].map((item) => (
             <Card key={item.title} className="p-6 space-y-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700/80 bg-[#070D1A] text-sky-400">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700/80 bg-[#0B0A08] text-sky-400">
                 <item.icon className="h-5 w-5" />
               </div>
               <h3 className="font-display text-base font-bold text-white">{item.title}</h3>
@@ -557,13 +557,13 @@ export function HomePage({ navigate }: { navigate: (to: string) => void }) {
           {TEAM_MINDS.map((member) => (
             <Card
               key={member.name}
-              className="relative overflow-hidden p-7 flex flex-col justify-between space-y-5 bg-gradient-to-b from-[#0E172C] to-[#080E1C]"
+              className="relative overflow-hidden p-7 flex flex-col justify-between space-y-5 bg-gradient-to-b from-[#12100D] to-[#0B0A09]"
             >
               <div className="flex items-center gap-4">
                 {/* Custom Replaceable Geometric Vector Monogram Portrait Placeholder */}
                 <div
                   aria-label={`${member.name} portrait placeholder`}
-                  className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border ${member.ring} bg-[#060B16] shadow-lg overflow-hidden`}
+                  className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border ${member.ring} bg-[#070705] shadow-lg overflow-hidden`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${member.accent} opacity-20`} />
                   <svg viewBox="0 0 64 64" className="absolute inset-0 h-full w-full opacity-25" aria-hidden="true">

@@ -79,7 +79,7 @@ export function AdminShell({
 
     return (
       <div className="mx-auto max-w-lg px-4 py-14 space-y-6">
-        <Card className="p-6 sm:p-8 space-y-5 bg-[#0B1222]/90 backdrop-blur-xl border-slate-700/80">
+        <Card className="p-6 sm:p-8 space-y-5 bg-[#0F0E0B]/90 backdrop-blur-xl border-slate-700/80">
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
             <Shield className="h-4 w-4" />
             <span>Administrator Authorization Required</span>
@@ -268,7 +268,7 @@ export function AdminDashboardPage({
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
-                <thead className="bg-[#080F1E] border-b border-slate-800 text-slate-400">
+                <thead className="bg-[#0C0B09] border-b border-slate-800 text-slate-400">
                   <tr>
                     <th className="px-4 py-2.5 text-left font-semibold">Timestamp</th>
                     <th className="px-4 py-2.5 text-left font-semibold">Actor</th>
@@ -682,7 +682,7 @@ export function AdminProductsPage({
             <Skeleton className="h-48 w-full" />
           ) : (
             <table className="w-full text-sm">
-              <thead className="bg-[#080F1E] border-b border-slate-800 text-xs text-slate-400">
+              <thead className="bg-[#0C0B09] border-b border-slate-800 text-xs text-slate-400">
                 <tr>
                   <th className="px-4 py-3 text-left font-semibold">
                     <button
@@ -1030,7 +1030,7 @@ export function AdminCategoriesPage({
               {(cat.specDefinitions || []).map((def) => (
                 <div
                   key={def.id}
-                  className="flex items-center justify-between rounded-lg border border-slate-800 bg-[#070D1A] px-3 py-2.5 text-xs"
+                  className="flex items-center justify-between rounded-lg border border-slate-800 bg-[#0B0A08] px-3 py-2.5 text-xs"
                 >
                   <div className="min-w-0 pr-2">
                     <div className="font-semibold text-white truncate">{def.label}</div>
@@ -1077,7 +1077,7 @@ export function AdminBrandsPage({
   const [country, setCountry] = useState('');
   const [description, setDescription] = useState('');
   const [tagline, setTagline] = useState('');
-  const [accentColor, setAccentColor] = useState('#38BDF8');
+  const [accentColor, setAccentColor] = useState('#D9B968');
   const [deleteTarget, setDeleteTarget] = useState<{ id: number; name: string } | null>(null);
 
   const handleAdd = async (e: React.FormEvent) => {
@@ -1143,7 +1143,7 @@ export function AdminBrandsPage({
               id="br-accent"
               value={accentColor}
               onChange={(e) => setAccentColor(e.target.value)}
-              placeholder="#38BDF8"
+              placeholder="#D9B968"
             />
           </div>
           <div className="sm:col-span-5">
@@ -1163,7 +1163,7 @@ export function AdminBrandsPage({
       <Card className="overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-[#080F1E] border-b border-slate-800 text-xs text-slate-400">
+            <thead className="bg-[#0C0B09] border-b border-slate-800 text-xs text-slate-400">
               <tr>
                 <th className="px-4 py-3 text-left font-semibold">Brand</th>
                 <th className="px-4 py-3 text-left font-semibold">Country</th>
@@ -1543,7 +1543,7 @@ export function AdminSellersPage({
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
-            <thead className="bg-[#080F1E] border-b border-slate-800 text-slate-400">
+            <thead className="bg-[#0C0B09] border-b border-slate-800 text-slate-400">
               <tr>
                 <th className="px-4 py-3 text-left font-semibold">Product</th>
                 <th className="px-4 py-3 text-left font-semibold">Seller</th>

@@ -146,11 +146,11 @@ export function Layout({
   }, {});
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#060B16] text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#070705] text-slate-100">
       <CartDrawer navigate={navigate} />
 
       {/* Sticky Dark Glass Navigation */}
-      <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#060B16]/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#070705]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <a
             href="/"
@@ -211,7 +211,7 @@ export function Layout({
                     animate={{ opacity: 1, y: 0 }}
                     exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
                     transition={{ duration: 0.16 }}
-                    className="absolute left-0 top-full mt-3 w-[640px] max-h-[75vh] overflow-y-auto rounded-2xl border border-slate-800 bg-[#0B1222]/95 backdrop-blur-xl p-5 shadow-2xl"
+                    className="absolute left-0 top-full mt-3 w-[640px] max-h-[75vh] overflow-y-auto rounded-2xl border border-slate-800 bg-[#0F0E0B]/95 backdrop-blur-xl p-5 shadow-2xl"
                   >
                     <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
                       <span className="font-display text-xs font-semibold text-sky-400">
@@ -285,7 +285,7 @@ export function Layout({
               type="button"
               onClick={() => setSearchOverlayOpen(true)}
               aria-label="Open product search"
-              className="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-800 bg-[#0B1222] px-2.5 text-xs font-medium text-slate-300 hover:border-slate-700 hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-800 bg-[#0F0E0B] px-2.5 text-xs font-medium text-slate-300 hover:border-slate-700 hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               <Search className="h-3.5 w-3.5 text-sky-400" />
               <span className="hidden sm:inline">Search</span>
@@ -300,14 +300,14 @@ export function Layout({
                 className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border transition-colors cursor-pointer ${
                   !muted
                     ? 'border-sky-500/50 bg-sky-500/10 text-sky-400'
-                    : 'border-slate-800 bg-[#0B1222] text-slate-400 hover:border-slate-700 hover:text-white'
+                    : 'border-slate-800 bg-[#0F0E0B] text-slate-400 hover:border-slate-700 hover:text-white'
                 }`}
               >
                 {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
               </button>
 
               {audioMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-60 rounded-xl border border-slate-800 bg-[#0B1222] p-4 shadow-2xl space-y-3 z-50">
+                <div className="absolute right-0 top-full mt-2 w-60 rounded-xl border border-slate-800 bg-[#0F0E0B] p-4 shadow-2xl space-y-3 z-50">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-white">Sound Cues</span>
                     <button
@@ -358,7 +358,7 @@ export function Layout({
               className={`hidden md:inline-flex h-9 items-center gap-1.5 rounded-lg border px-2.5 text-xs font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
                 currentPath === '/wishlist'
                   ? 'border-sky-500/60 bg-sky-500/10 text-sky-300'
-                  : 'border-slate-800 bg-[#0B1222] text-slate-300 hover:border-slate-700 hover:text-white'
+                  : 'border-slate-800 bg-[#0F0E0B] text-slate-300 hover:border-slate-700 hover:text-white'
               }`}
             >
               <Bookmark className="h-3.5 w-3.5" />
@@ -374,7 +374,7 @@ export function Layout({
               type="button"
               onClick={() => setDrawerOpen(true)}
               aria-label="Open shopping cart"
-              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-800 bg-[#0B1222] px-2.5 text-xs font-medium text-slate-200 hover:border-sky-500/60 hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-slate-800 bg-[#0F0E0B] px-2.5 text-xs font-medium text-slate-200 hover:border-sky-500/60 hover:text-white transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               <ShoppingBag className="h-3.5 w-3.5 text-sky-400" />
               <span className="hidden sm:inline">Cart</span>
@@ -408,7 +408,7 @@ export function Layout({
               type="button"
               onClick={() => setMobileMenuOpen((v) => !v)}
               aria-label="Toggle navigation menu"
-              className="xl:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-[#0B1222] text-slate-200 hover:bg-slate-800"
+              className="xl:hidden inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-800 bg-[#0F0E0B] text-slate-200 hover:bg-slate-800"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -422,7 +422,7 @@ export function Layout({
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
-              className="xl:hidden overflow-hidden border-t border-slate-800 bg-[#0B1222] px-4 py-4 space-y-1.5"
+              className="xl:hidden overflow-hidden border-t border-slate-800 bg-[#0F0E0B] px-4 py-4 space-y-1.5"
             >
               {navLinks.map((link) => (
                 <button
@@ -514,7 +514,7 @@ export function Layout({
               exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.18 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-2xl rounded-2xl border border-slate-700/80 bg-[#0B1222] shadow-2xl overflow-hidden"
+              className="w-full max-w-2xl rounded-2xl border border-slate-700/80 bg-[#0F0E0B] shadow-2xl overflow-hidden"
             >
               <form onSubmit={handleOverlaySubmit} className="flex items-center gap-3 border-b border-slate-800 p-4">
                 <Search className="h-5 w-5 text-sky-400 shrink-0" />
@@ -555,7 +555,7 @@ export function Layout({
                           key={prod.id}
                           type="button"
                           onClick={() => handleNav(`/products/${prod.slug}`)}
-                          className="flex w-full items-center justify-between gap-4 rounded-xl border border-slate-800/80 bg-[#070D1A] p-3 text-left hover:border-sky-500/50 transition-colors cursor-pointer"
+                          className="flex w-full items-center justify-between gap-4 rounded-xl border border-slate-800/80 bg-[#0B0A08] p-3 text-left hover:border-sky-500/50 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center gap-3 min-w-0">
                             <div className="h-12 w-16 rounded-lg overflow-hidden bg-slate-900 shrink-0">
@@ -586,7 +586,7 @@ export function Layout({
                           key={cat.id}
                           type="button"
                           onClick={() => handleNav(`/category/${cat.slug}`)}
-                          className="flex items-center justify-between rounded-lg border border-slate-800 bg-[#070D1A] px-3 py-2 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-white transition-colors cursor-pointer"
+                          className="flex items-center justify-between rounded-lg border border-slate-800 bg-[#0B0A08] px-3 py-2 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-white transition-colors cursor-pointer"
                         >
                           <span className="truncate">{cat.name}</span>
                           <ArrowRight className="h-3 w-3 text-slate-500 shrink-0" />
@@ -641,7 +641,7 @@ export function Layout({
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
-            className="sticky bottom-0 z-30 border-t border-slate-700/80 bg-[#0B1222]/95 backdrop-blur-xl text-white shadow-2xl"
+            className="sticky bottom-0 z-30 border-t border-slate-700/80 bg-[#0F0E0B]/95 backdrop-blur-xl text-white shadow-2xl"
           >
             <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
               <div className="flex items-center gap-3 overflow-x-auto py-0.5">
@@ -653,7 +653,7 @@ export function Layout({
                   {compareItems.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center gap-2 rounded-lg border border-slate-700/80 bg-[#060B16] px-2.5 py-1 text-xs whitespace-nowrap"
+                      className="flex items-center gap-2 rounded-lg border border-slate-700/80 bg-[#070705] px-2.5 py-1 text-xs whitespace-nowrap"
                     >
                       <span className="max-w-[130px] truncate text-slate-200">{item.name}</span>
                       <button
@@ -693,7 +693,7 @@ export function Layout({
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 bg-[#050912] text-slate-300">
+      <footer className="border-t border-slate-800/80 bg-[#060605] text-slate-300">
         <div className="mx-auto max-w-[1440px] px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
             <div className="space-y-3">

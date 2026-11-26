@@ -58,14 +58,14 @@ export function BrandsDirectoryPage({ navigate }: { navigate: (to: string) => vo
           >
             <div
               className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-15 blur-2xl group-hover:opacity-30 transition-opacity"
-              style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+              style={{ backgroundColor: brand.accentColor || '#D9B968' }}
             />
             <div className="space-y-2">
               <div className="flex items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-2 text-xs font-medium text-slate-400">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
-                    style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+                    style={{ backgroundColor: brand.accentColor || '#D9B968' }}
                   />
                   {brand.country}
                 </span>
@@ -168,12 +168,12 @@ export function BrandShowcasePage({
   const { brand, categories } = detail;
 
   return (
-    <div className="bg-[#060B16]">
+    <div className="bg-[#070705]">
       {/* Brand Accent Hero */}
       <section className="relative overflow-hidden border-b border-slate-800/80">
         <div
           className="pointer-events-none absolute -top-32 left-1/4 h-96 w-96 rounded-full opacity-20 blur-[130px]"
-          style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+          style={{ backgroundColor: brand.accentColor || '#D9B968' }}
         />
         <div className="relative mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:px-8 space-y-6">
           <Breadcrumbs
@@ -194,7 +194,7 @@ export function BrandShowcasePage({
               <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-slate-300">
                 <span
                   className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: brand.accentColor || '#38BDF8' }}
+                  style={{ backgroundColor: brand.accentColor || '#D9B968' }}
                 />
                 <span>{brand.country}</span>
                 <span>·</span>
@@ -204,7 +204,7 @@ export function BrandShowcasePage({
                 {brand.name}
               </h1>
               {brand.tagline && (
-                <p className="text-lg font-semibold" style={{ color: brand.accentColor || '#38BDF8' }}>
+                <p className="text-lg font-semibold" style={{ color: brand.accentColor || '#D9B968' }}>
                   {brand.tagline}
                 </p>
               )}
@@ -219,7 +219,7 @@ export function BrandShowcasePage({
                   href={brand.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0B1222] px-4 py-2 text-xs font-semibold text-slate-200 hover:border-slate-500"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-[#0F0E0B] px-4 py-2 text-xs font-semibold text-slate-200 hover:border-slate-500"
                 >
                   <Globe className="h-3.5 w-3.5 text-sky-400" />
                   <span>Official Brand Site</span>
@@ -244,7 +244,7 @@ export function BrandShowcasePage({
               className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                 categoryFilter === 'ALL'
                   ? 'bg-sky-500 text-slate-950'
-                  : 'border border-slate-800 bg-[#0B1222] text-slate-300 hover:text-white'
+                  : 'border border-slate-800 bg-[#0F0E0B] text-slate-300 hover:text-white'
               }`}
             >
               All Categories ({detail.products.length})
@@ -257,7 +257,7 @@ export function BrandShowcasePage({
                 className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
                   categoryFilter === c.slug
                     ? 'bg-sky-500 text-slate-950'
-                    : 'border border-slate-800 bg-[#0B1222] text-slate-300 hover:text-white'
+                    : 'border border-slate-800 bg-[#0F0E0B] text-slate-300 hover:text-white'
                 }`}
               >
                 {c.name}

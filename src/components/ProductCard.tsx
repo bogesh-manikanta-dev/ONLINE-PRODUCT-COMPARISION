@@ -79,17 +79,17 @@ export function ProductCard({
   return (
     <Card
       onClick={() => navigate(`/products/${product.slug}`)}
-      className="group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-500/45 hover:shadow-[0_22px_48px_-20px_rgba(56,189,248,0.22)] cursor-pointer"
+      className="group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-500/45 hover:shadow-[0_22px_48px_-20px_rgba(217,185,104,0.22)] cursor-pointer"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#070D1A] border-b border-slate-800/80">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#0B0A08] border-b border-slate-800/80">
         <ProductImage
           src={product.primaryImage}
           alt={product.name}
           className="h-full w-full transition-transform duration-300 group-hover:scale-[1.04]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060B16]/75 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#070705]/75 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
         <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
-          <span className="inline-flex items-center gap-1 rounded-lg bg-[#060B16]/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 text-xs font-medium text-slate-100">
+          <span className="inline-flex items-center gap-1 rounded-lg bg-[#070705]/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 text-xs font-medium text-slate-100">
             <span>View Details</span>
             <ArrowUpRight className="h-3.5 w-3.5 text-sky-400" />
           </span>

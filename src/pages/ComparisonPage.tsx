@@ -270,7 +270,7 @@ export function ComparisonPage({ navigate }: { navigate: (to: string) => void })
       {analysis && analysis.compatible && !loading && (
         <>
           {/* Summary Banner + Conditional Spec Advantage */}
-          <Card className="p-6 bg-gradient-to-br from-[#0D172E] via-[#0B1222] to-[#111936] border-slate-700/80 space-y-3">
+          <Card className="p-6 bg-gradient-to-br from-[#12100D] via-[#0F0E0B] to-[#17140F] border-slate-700/80 space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="text-xs font-semibold text-sky-400">
                 Comparison Summary · {analysis.categoryName}
@@ -290,7 +290,7 @@ export function ComparisonPage({ navigate }: { navigate: (to: string) => void })
 
           {/* Filter Mode Toggle */}
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-1 p-1 rounded-xl border border-slate-800 bg-[#0B1222]">
+            <div className="inline-flex items-center gap-1 p-1 rounded-xl border border-slate-800 bg-[#0F0E0B]">
               {[
                 { id: 'all', label: `Full Matrix (${analysis.rows.length})` },
                 {
@@ -325,7 +325,7 @@ export function ComparisonPage({ navigate }: { navigate: (to: string) => void })
           <Card className="overflow-hidden">
             <div className="overflow-x-auto max-h-[75vh] overflow-y-auto">
               <table className="w-full text-sm border-collapse min-w-[700px]">
-                <thead className="sticky top-0 z-20 bg-[#0D1629] shadow-[0_6px_18px_-8px_rgba(0,0,0,0.9)]">
+                <thead className="sticky top-0 z-20 bg-[#110F0D] shadow-[0_6px_18px_-8px_rgba(0,0,0,0.9)]">
                   <tr className="border-b border-slate-800">
                     <th className="p-4 text-left font-display text-xs font-semibold text-slate-400 w-56 align-bottom">
                       Specification
@@ -348,7 +348,7 @@ export function ComparisonPage({ navigate }: { navigate: (to: string) => void })
                         </div>
                         <div
                           onClick={() => navigate(`/products/${prod.slug}`)}
-                          className="aspect-[4/3] w-full overflow-hidden rounded-lg border border-slate-800 bg-[#070D1A] mb-3 cursor-pointer"
+                          className="aspect-[4/3] w-full overflow-hidden rounded-lg border border-slate-800 bg-[#0B0A08] mb-3 cursor-pointer"
                         >
                           <ProductImage src={prod.primaryImage} alt={prod.name} className="h-full w-full" />
                         </div>
@@ -387,7 +387,7 @@ export function ComparisonPage({ navigate }: { navigate: (to: string) => void })
                 <tbody className="divide-y divide-slate-800/80">
                   {groupedSections.map((section) => (
                     <React.Fragment key={section.title}>
-                      <tr className="bg-[#080F1E]">
+                      <tr className="bg-[#0C0B09]">
                         <td
                           colSpan={analysis.products.length + 1}
                           className="px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-sky-400 border-t border-slate-800"

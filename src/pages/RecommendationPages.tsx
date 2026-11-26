@@ -166,7 +166,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                   ? 'border-sky-400 bg-sky-500/15 text-white'
                   : isCompleted
                     ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-                    : 'border-slate-800 bg-[#0B1222] text-slate-400 hover:border-slate-700'
+                    : 'border-slate-800 bg-[#0F0E0B] text-slate-400 hover:border-slate-700'
               }`}
             >
               <span className="font-mono text-xs font-bold shrink-0">
@@ -210,7 +210,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                       className={`rounded-xl border p-4 text-left transition-all cursor-pointer ${
                         active
                           ? 'border-sky-400 bg-sky-500/15 text-white'
-                          : 'border-slate-800 bg-[#070D1A] text-slate-300 hover:border-slate-700'
+                          : 'border-slate-800 bg-[#0B0A08] text-slate-300 hover:border-slate-700'
                       }`}
                     >
                       <div className="text-[11px] font-medium text-sky-400">{c.domainGroup}</div>
@@ -279,7 +279,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                       key={preset}
                       type="button"
                       onClick={() => setBudgetMax(String(preset))}
-                      className="rounded-lg border border-slate-700 bg-[#070D1A] px-2.5 py-1 text-xs font-mono text-slate-300 hover:border-sky-400 hover:text-white cursor-pointer"
+                      className="rounded-lg border border-slate-700 bg-[#0B0A08] px-2.5 py-1 text-xs font-mono text-slate-300 hover:border-sky-400 hover:text-white cursor-pointer"
                     >
                       ₹{preset.toLocaleString('en-IN')}
                     </button>
@@ -351,7 +351,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                       className={`rounded-xl border p-4 text-left transition-all cursor-pointer ${
                         active
                           ? 'border-sky-400 bg-sky-500/15 text-white'
-                          : 'border-slate-800 bg-[#070D1A] text-slate-300 hover:border-slate-700'
+                          : 'border-slate-800 bg-[#0B0A08] text-slate-300 hover:border-slate-700'
                       }`}
                     >
                       <div className="font-display text-sm font-semibold">{opt.label}</div>
@@ -441,7 +441,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                           className={`flex items-center gap-2 rounded-lg border px-3 py-2.5 text-xs font-medium cursor-pointer transition-colors ${
                             checked
                               ? 'border-sky-400 bg-sky-500/15 text-sky-200'
-                              : 'border-slate-800 bg-[#070D1A] text-slate-300 hover:border-slate-700'
+                              : 'border-slate-800 bg-[#0B0A08] text-slate-300 hover:border-slate-700'
                           }`}
                         >
                           <input
@@ -481,7 +481,7 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                 ].map((item) => {
                   const k = item.key as keyof typeof priorities;
                   return (
-                    <div key={item.key} className="space-y-2 rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                    <div key={item.key} className="space-y-2 rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                       <div className="flex justify-between text-xs font-semibold text-slate-200">
                         <span>{item.label}</span>
                         <span className="font-mono text-sky-400 tabular-nums">{priorities[k]}%</span>
@@ -514,26 +514,26 @@ export function RecommendationQuestionnairePage({ navigate }: { navigate: (to: s
                 </p>
               </div>
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                   <dt className="text-xs text-slate-400">Category</dt>
                   <dd className="font-semibold text-white mt-0.5">{selectedCategory?.name}</dd>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                   <dt className="text-xs text-slate-400">Budget Range</dt>
                   <dd className="font-mono font-semibold text-white mt-0.5 tabular-nums">
                     {budgetMin ? `₹${Number(budgetMin).toLocaleString('en-IN')}` : '₹0'} — ₹
                     {Number(budgetMax || 80000).toLocaleString('en-IN')}
                   </dd>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                   <dt className="text-xs text-slate-400">Intended Usage</dt>
                   <dd className="font-semibold text-white mt-0.5">{selectedUsageLabel}</dd>
                 </div>
-                <div className="rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                <div className="rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                   <dt className="text-xs text-slate-400">Preferred Brand</dt>
                   <dd className="font-semibold text-white mt-0.5">{selectedBrandName}</dd>
                 </div>
-                <div className="sm:col-span-2 rounded-xl border border-slate-800 bg-[#070D1A] p-4">
+                <div className="sm:col-span-2 rounded-xl border border-slate-800 bg-[#0B0A08] p-4">
                   <dt className="text-xs text-slate-400">Priority Weights</dt>
                   <dd className="font-mono text-xs text-sky-300 mt-1 tabular-nums">
                     Specs {priorities.performance}% · Value {priorities.value}% · Usage {priorities.efficiency}% · Reliability {priorities.reliability}%
@@ -780,7 +780,7 @@ export function RecommendationResultsPage({ navigate }: { navigate: (to: string)
                 <Card key={rec.product.id} className="p-6 space-y-5">
                   <div className="flex flex-col sm:flex-row gap-5 justify-between border-b border-slate-800 pb-5">
                     <div className="flex gap-4">
-                      <div className="h-24 w-32 shrink-0 overflow-hidden rounded-xl border border-slate-800 bg-[#070D1A]">
+                      <div className="h-24 w-32 shrink-0 overflow-hidden rounded-xl border border-slate-800 bg-[#0B0A08]">
                         <ProductImage
                           src={rec.product.primaryImage}
                           alt={rec.product.name}
@@ -828,30 +828,30 @@ export function RecommendationResultsPage({ navigate }: { navigate: (to: string)
                     <div className="md:col-span-5 h-44">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={scoreChart} layout="vertical" margin={{ left: 8, right: 20 }}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
+                          <CartesianGrid strokeDasharray="3 3" stroke="#3A342C" />
                           <XAxis
                             type="number"
                             domain={[0, 100]}
-                            tick={{ fontSize: 11, fill: '#94A3B8' }}
-                            stroke="#334155"
+                            tick={{ fontSize: 11, fill: '#A79E90' }}
+                            stroke="#514A41"
                           />
                           <YAxis
                             type="category"
                             dataKey="name"
-                            tick={{ fontSize: 11, fill: '#CBD5E1' }}
-                            stroke="#334155"
+                            tick={{ fontSize: 11, fill: '#DDD4C6' }}
+                            stroke="#514A41"
                             width={48}
                           />
                           <Tooltip
                             contentStyle={{
-                              backgroundColor: '#0B1222',
-                              borderColor: '#334155',
+                              backgroundColor: '#0F0E0B',
+                              borderColor: '#514A41',
                               borderRadius: '0.75rem',
-                              color: '#F1F5F9',
+                              color: '#F3EEE4',
                               fontSize: '12px',
                             }}
                           />
-                          <Bar dataKey="score" fill="#38BDF8" radius={[0, 5, 5, 0]} />
+                          <Bar dataKey="score" fill="#D9B968" radius={[0, 5, 5, 0]} />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
@@ -881,7 +881,7 @@ export function RecommendationResultsPage({ navigate }: { navigate: (to: string)
                   </div>
 
                   {rec.missingDataNotes.length > 0 && (
-                    <div className="flex items-start gap-2 rounded-lg border border-slate-800 bg-[#070D1A] px-3.5 py-2.5 text-xs text-slate-300">
+                    <div className="flex items-start gap-2 rounded-lg border border-slate-800 bg-[#0B0A08] px-3.5 py-2.5 text-xs text-slate-300">
                       <Info className="h-4 w-4 text-sky-400 shrink-0 mt-0.5" />
                       <span>{rec.missingDataNotes.join(' · ')}</span>
                     </div>

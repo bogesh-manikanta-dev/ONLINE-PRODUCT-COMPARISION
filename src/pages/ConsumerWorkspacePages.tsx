@@ -105,7 +105,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
   if (!user) {
     return (
       <div className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:px-8 space-y-10">
-        <Card className="p-8 bg-gradient-to-br from-[#0D172E] via-[#0B1222] to-[#111936] border-slate-700/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <Card className="p-8 bg-gradient-to-br from-[#12100D] via-[#0F0E0B] to-[#17140F] border-slate-700/80 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="text-xs font-semibold uppercase tracking-wider text-sky-400">
               Consumer Workspace
@@ -258,7 +258,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
                 {recentOrders.slice(0, 4).map((ord) => (
                   <div
                     key={ord.id}
-                    className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#070D1A] p-4"
+                    className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#0B0A08] p-4"
                   >
                     <div className="min-w-0">
                       <div className="font-mono text-xs font-bold text-sky-400">
@@ -308,7 +308,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
                   {savedComparisons.map((c) => (
                     <div
                       key={c.id}
-                      className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#070D1A] p-3.5"
+                      className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-[#0B0A08] p-3.5"
                     >
                       <div className="min-w-0">
                         <div className="text-xs text-slate-400">
@@ -355,7 +355,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
                   {recommendations.map((rec) => (
                     <div
                       key={rec.id}
-                      className="rounded-xl border border-slate-800 bg-[#070D1A] p-3.5"
+                      className="rounded-xl border border-slate-800 bg-[#0B0A08] p-3.5"
                     >
                       <div className="flex items-center justify-between text-xs text-slate-400">
                         <span>
@@ -403,7 +403,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
                 {wishlist.slice(0, 3).map((entry) => (
                   <div
                     key={entry.id}
-                    className="flex items-center justify-between gap-3 rounded-xl border border-slate-800 bg-[#070D1A] p-3.5"
+                    className="flex items-center justify-between gap-3 rounded-xl border border-slate-800 bg-[#0B0A08] p-3.5"
                   >
                     <div className="min-w-0">
                       <div className="text-xs text-slate-400 truncate">
@@ -456,7 +456,7 @@ export function ConsumerDashboardPage({ navigate }: { navigate: (to: string) => 
                   key={cat.id}
                   type="button"
                   onClick={() => navigate(`/category/${cat.slug}`)}
-                  className="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0B1222] px-4 py-3 text-left text-sm font-semibold text-white hover:border-sky-500/50 transition-colors cursor-pointer"
+                  className="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0F0E0B] px-4 py-3 text-left text-sm font-semibold text-white hover:border-sky-500/50 transition-colors cursor-pointer"
                 >
                   <span className="truncate">{cat.name}</span>
                   <ArrowRight className="h-4 w-4 text-sky-400 shrink-0" />
@@ -1273,7 +1273,7 @@ export function ReturnsPage({ navigate }: { navigate: (to: string) => void }) {
                 <strong className="text-slate-200">Reason:</strong> {ret.reason}
               </p>
               {ret.adminNote && (
-                <p className="text-xs text-sky-300 bg-[#070D1A] border border-slate-800 rounded-lg px-3 py-2">
+                <p className="text-xs text-sky-300 bg-[#0B0A08] border border-slate-800 rounded-lg px-3 py-2">
                   Administrator Note: {ret.adminNote}
                 </p>
               )}
