@@ -1,0 +1,8 @@
+{
+  "name": "CompareX",
+  "description": "Smart Product Comparison & Decision Support System — Compare Smarter. Choose Better.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
