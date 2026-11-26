@@ -11,7 +11,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { normalizeNumericSpec } from '../../shared/engines/comparisonEngine.ts';
+import { normalizeNumericSpec } from '../shared/engines/comparisonEngine.ts';
 import {
   CATEGORY_NUMERIC_SPEC_KEYS,
   CATEGORY_SPEC_KEYS,
