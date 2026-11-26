@@ -482,6 +482,7 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
     const nextTilt = tiltByKey(tiltRef.current, event.key);
     if (nextYaw === null && nextTilt === null) return;
     event.preventDefault();
+    if (spinRef.current) setSpin(false);
     if (nextYaw !== null) {
       yawRef.current = nextYaw;
       setYawLabel(nextYaw);
@@ -493,6 +494,13 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (status !== 'ready') return;
+    // The overlay controls live inside the host element. Starting a drag (and
+    // capturing the pointer) for them would retarget the pointerup and swallow
+    // the click, leaving pause/reset unresponsive.
+    const target = event.target as HTMLElement | null;
+    if (target?.closest('button')) return;
+    // Taking manual control stops auto-rotation so the model does not fight the drag.
+    if (spinRef.current) setSpin(false);
     dragRef.current = { id: event.pointerId, x: event.clientX, y: event.clientY };
     try {
       event.currentTarget.setPointerCapture?.(event.pointerId);
