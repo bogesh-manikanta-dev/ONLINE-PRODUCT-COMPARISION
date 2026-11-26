@@ -535,7 +535,9 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
 
   const frameClass =
     variant === 'card'
-      ? 'h-full w-full bg-gradient-to-b from-[#151518] via-[#0b0b0d] to-black'
+      ? // aspect-[4/3] keeps the card preview self-sizing when a caller does not
+        // supply an explicit height; a definite height from className still wins.
+        'aspect-[4/3] h-full w-full bg-gradient-to-b from-[#151518] via-[#0b0b0d] to-black'
       : 'aspect-square w-full rounded-3xl border border-white/10 bg-gradient-to-b from-[#17171b] via-[#0b0b0d] to-black';
 
   const fallbackReason =
