@@ -1,5 +1,11 @@
 import { and, eq, notInArray } from 'drizzle-orm';
 import { normalizeNumericSpec } from '../../shared/engines/comparisonEngine.ts';
+import {
+  EXPANSION_CATEGORIES,
+  EXPANSION_PRODUCTS,
+  EXPANSION_SPEC_DEFS,
+  EXPANSION_SUBCATEGORIES,
+} from './catalog/expansion.ts';
 import { db } from './index.ts';
 import {
   auditLogs,
@@ -17,7 +23,10 @@ import {
   systemSettings,
 } from './schema.ts';
 
-const PHASE3_SEED_VERSION = 'v1';
+// Bumped to v2 for the Phase 4 catalogue expansion: existing installations
+// re-run the idempotent sync so the 19 new demo products appear, while every
+// existing product row is upserted by slug and therefore preserved.
+const PHASE3_SEED_VERSION = 'v2';
 
 let seedPromise: Promise<void> | null = null;
 
@@ -149,6 +158,7 @@ async function syncPhase3Catalog(): Promise<void> {
     { name: 'Furniture', slug: 'furniture', domainGroup: 'Other', description: 'Ergonomic work chairs and modular workspace seating.', iconName: 'Armchair', displayOrder: 15 },
     { name: 'Kitchen Appliances', slug: 'kitchen-appliances', domainGroup: 'Other', description: 'High-wattage mixer grinders and daily prep appliances.', iconName: 'Utensils', displayOrder: 16 },
     { name: 'Air Purifiers', slug: 'air-purifiers', domainGroup: 'Other', description: 'HEPA filtration and real-time indoor air quality purifiers.', iconName: 'Leaf', displayOrder: 17 },
+    ...EXPANSION_CATEGORIES,
   ];
 
   const catBySlug = new Map<string, typeof categories.$inferSelect>();
@@ -192,6 +202,7 @@ async function syncPhase3Catalog(): Promise<void> {
     { cat: 'furniture', name: 'Ergonomic Seating', slug: 'ergonomic-seating', description: 'Lumbar-supported desk chairs' },
     { cat: 'kitchen-appliances', name: 'Mixer Grinders', slug: 'mixer-grinders', description: 'Heavy-duty wet & dry grinding' },
     { cat: 'air-purifiers', name: 'HEPA Purifiers', slug: 'hepa-purifiers', description: 'H13 HEPA indoor purification' },
+    ...EXPANSION_SUBCATEGORIES,
   ];
 
   const subByKey = new Map<string, typeof subcategories.$inferSelect>();
@@ -391,6 +402,7 @@ async function syncPhase3Catalog(): Promise<void> {
     { categorySlug: 'air-purifiers', key: 'cadr', label: 'Clean Air Delivery (CADR)', dataType: 'numeric', unit: 'm3/h', higherIsBetter: true, isMandatory: true, isComparable: true, weight: 1.4, sortOrder: 1 },
     { categorySlug: 'air-purifiers', key: 'coverage_area', label: 'Room Coverage', dataType: 'numeric', unit: 'sq ft', higherIsBetter: true, isMandatory: true, isComparable: true, weight: 1.3, sortOrder: 2 },
     { categorySlug: 'air-purifiers', key: 'hepa_grade', label: 'Filtration Grade', dataType: 'text', unit: '', higherIsBetter: null, isMandatory: true, isComparable: true, weight: 1.1, sortOrder: 3 },
+    ...EXPANSION_SPEC_DEFS,
     { categorySlug: 'air-purifiers', key: 'noise_db', label: 'Sleep Mode Noise', dataType: 'numeric', unit: 'dB', higherIsBetter: false, isMandatory: true, isComparable: true, weight: 1.0, sortOrder: 4 },
   ];
 
@@ -1089,6 +1101,10 @@ async function syncPhase3Catalog(): Promise<void> {
       secondaryImage: IMG.CLIMATE,
       specs: { cadr: '361 m3/h', coverage_area: '600 sq ft', hepa_grade: 'True HEPA H13 + Carbon', noise_db: '43 dB' },
     },
+
+    // Phase 4 expansion (19 additional demo products, defined in
+    // ./catalog/expansion.ts so the catalogue is testable without a database).
+    ...EXPANSION_PRODUCTS,
   ];
 
   // Archive any old Phase 2 fictional slugs so active catalog strictly showcases Phase 3 products
