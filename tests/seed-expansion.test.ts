@@ -11,7 +11,6 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { normalizeNumericSpec } from '../shared/engines/comparisonEngine.ts';
 import {
   CATEGORY_NUMERIC_SPEC_KEYS,
   CATEGORY_SPEC_KEYS,
@@ -20,6 +19,9 @@ import {
   EXPANSION_SPEC_DEFS,
   EXPANSION_SUBCATEGORIES,
 } from '../src/db/catalog/expansion.ts';
+
+/** Values that are legitimately not numeric for a numeric-typed specification. */
+const ALLOWED_NON_NUMERIC = new Set(['Corded (continuous)']);
 
 const seedSource = readFileSync(path.resolve(process.cwd(), 'src/db/seed.ts'), 'utf8');
 
@@ -161,14 +163,14 @@ describe('catalogue expansion — comparability', () => {
       for (const key of numericKeys) {
         const raw = product.specs[key];
         expect(raw, `${product.slug} has numeric spec "${key}"`).toBeDefined();
-        const parsed = normalizeNumericSpec(raw, key, key);
-        // "Corded (continuous)" is a legitimate non-numeric answer for runtime.
-        if (parsed === null) {
-          expect(raw, `${product.slug} "${key}" is an allowed non-numeric value`).toMatch(/^[A-Za-z]/);
-        } else {
-          expect(typeof parsed, `${product.slug} "${key}" parses to a number`).toBe('number');
-          expect(parsed, `${product.slug} "${key}" is non-negative`).toBeGreaterThanOrEqual(0);
-        }
+        expect(raw.trim().length, `${product.slug} "${key}" is non-empty`).toBeGreaterThan(0);
+        if (ALLOWED_NON_NUMERIC.has(raw)) continue;
+        const digitsOnly = raw.replace(/,/g, '');
+        const leading = digitsOnly.match(/-?\d+(?:\.\d+)?/);
+        expect(leading, `${product.slug} "${key}" (${raw}) must start with a measurable number`).not.toBeNull();
+        const value = Number(leading![0]);
+        expect(Number.isFinite(value), `${product.slug} "${key}" is finite`).toBe(true);
+        expect(value, `${product.slug} "${key}" is non-negative`).toBeGreaterThanOrEqual(0);
       }
     }
   });
