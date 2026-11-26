@@ -3,6 +3,7 @@ import {
   AlertTriangle,
   ArrowLeft,
   Bookmark,
+  Box,
   Check,
   Info,
   LineChart as LineChartIcon,
@@ -23,12 +24,14 @@ import {
 } from 'recharts';
 import type { PriceObservationDTO, ProductDTO } from '../../shared/types.ts';
 import { ProductCard } from '../components/ProductCard.tsx';
+import { Product3DViewer } from '../components/Product3DViewer.tsx';
 import { Breadcrumbs, Button, Card, ProductImage, Skeleton } from '../components/ui/Primitives.tsx';
 import { useAuth } from '../context/AuthContext.tsx';
 import { useCart } from '../context/CartContext.tsx';
 import { useCompare } from '../context/CompareContext.tsx';
 import { apiRequest } from '../lib/api.ts';
 import { formatCurrency, formatDate } from '../lib/utils.ts';
+import { resolveProductViewer } from '../lib/product3d.ts';
 import { recordRecentlyViewedSlug } from './DiscoveryPages.tsx';
 
 export function ProductDetailPage({
@@ -49,6 +52,11 @@ export function ProductDetailPage({
   const [similarProducts, setSimilarProducts] = useState<ProductDTO[]>([]);
   const [activeImageIdx, setActiveImageIdx] = useState(0);
   const [zoomed, setZoomed] = useState(false);
+  const [viewMode, setViewMode] = useState<'photo' | 'studio'>(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return 'photo';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    return !reduce && window.innerWidth >= 1024 ? 'studio' : 'photo';
+  });
   const [qty, setQty] = useState(1);
   const [addingCart, setAddingCart] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -104,6 +112,18 @@ export function ProductDetailPage({
     }
     return [{ url: product.primaryImage, alt: product.name }];
   }, [product]);
+
+  const viewerSupported = useMemo(
+    () =>
+      product
+        ? resolveProductViewer({
+            model3dPreset: product.model3dPreset,
+            categorySlug: product.categorySlug,
+            finishHex: product.finishHex,
+          }).supported
+        : false,
+    [product]
+  );
 
   if (loading) {
     return (
@@ -198,6 +218,44 @@ export function ProductDetailPage({
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
         {/* Image Gallery */}
         <div className="lg:col-span-6 space-y-3">
+          {viewerSupported && (
+            <div className="flex items-center justify-between gap-3">
+              <div className="inline-flex rounded-full border border-slate-800 bg-[#0B0A08] p-1">
+                <button
+                  type="button"
+                  onClick={() => setViewMode('photo')}
+                  aria-pressed={viewMode === 'photo'}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
+                    viewMode === 'photo'
+                      ? 'bg-sky-400/15 text-sky-300'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  Photos
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setViewMode('studio')}
+                  aria-pressed={viewMode === 'studio'}
+                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors cursor-pointer ${
+                    viewMode === 'studio'
+                      ? 'bg-sky-400/15 text-sky-300'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  <Box className="h-3 w-3" aria-hidden="true" />
+                  360° Studio
+                </button>
+              </div>
+              <span className="hidden text-[11px] uppercase tracking-[0.14em] text-slate-500 sm:inline">
+                Interactive 3D
+              </span>
+            </div>
+          )}
+
+          {viewMode === 'studio' && viewerSupported ? (
+            <Product3DViewer product={product} variant="detail" />
+          ) : (
           <div className="relative overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0F0E0B] aspect-[4/3] group">
             <ProductImage
               src={currentImg?.url}
@@ -215,8 +273,9 @@ export function ProductDetailPage({
               {zoomed ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </button>
           </div>
+          )}
 
-          {galleryImages.length > 1 && (
+          {viewMode === 'photo' && galleryImages.length > 1 && (
             <div className="flex items-center gap-3 overflow-x-auto pb-1">
               {galleryImages.map((img, idx) => (
                 <button

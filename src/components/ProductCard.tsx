@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, Bookmark, Check, Scale, ShoppingBag, Star } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { ArrowUpRight, Bookmark, Box, Check, Scale, ShoppingBag, Star } from 'lucide-react';
 import type { ProductDTO } from '../../shared/types.ts';
+import { Product3DViewer } from './Product3DViewer.tsx';
+import { resolveProductViewer } from '../lib/product3d.ts';
 import { useAuth } from '../context/AuthContext.tsx';
 import { useAudio } from '../context/AudioContext.tsx';
 import { useCart } from '../context/CartContext.tsx';
@@ -22,6 +24,16 @@ export function ProductCard({
   const { compareItems, addToCompare, removeFromCompare, wishlistIds, setWishlistIds, showNotice } =
     useCompare();
   const [adding, setAdding] = useState(false);
+  const [show3d, setShow3d] = useState(false);
+  const can3d = useMemo(
+    () =>
+      resolveProductViewer({
+        model3dPreset: product.model3dPreset,
+        categorySlug: product.categorySlug,
+        finishHex: product.finishHex,
+      }).supported,
+    [product.model3dPreset, product.categorySlug, product.finishHex]
+  );
 
   const isInCompare = compareItems.some((p) => p.id === product.id);
   const isWishlisted = wishlistIds.has(product.id);
@@ -82,12 +94,38 @@ export function ProductCard({
       className="group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:border-sky-500/45 hover:shadow-[0_22px_48px_-20px_rgba(217,185,104,0.22)] cursor-pointer"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#0B0A08] border-b border-slate-800/80">
-        <ProductImage
-          src={product.primaryImage}
-          alt={product.name}
-          className="h-full w-full transition-transform duration-300 group-hover:scale-[1.04]"
-        />
+        {show3d ? (
+          <div
+            className="absolute inset-0 z-10"
+            onClick={(e) => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
+          >
+            <Product3DViewer product={product} variant="card" className="h-full w-full" />
+          </div>
+        ) : (
+          <ProductImage
+            src={product.primaryImage}
+            alt={product.name}
+            className="h-full w-full transition-transform duration-300 group-hover:scale-[1.04]"
+          />
+        )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#070705]/75 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+        {can3d && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShow3d((value) => !value);
+            }}
+            onPointerDown={(e) => e.stopPropagation()}
+            aria-pressed={show3d}
+            aria-label={show3d ? `Show photos of ${product.name}` : `View ${product.name} in 3D`}
+            className="absolute bottom-3 left-3 z-20 inline-flex items-center gap-1 rounded-lg border border-slate-700/80 bg-[#070705]/85 px-2 py-1 text-[11px] font-medium text-slate-100 backdrop-blur-md transition-colors hover:border-sky-400/60 hover:text-white cursor-pointer"
+          >
+            <Box className="h-3 w-3 text-sky-400" aria-hidden="true" />
+            {show3d ? 'Photos' : '3D'}
+          </button>
+        )}
         <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
           <span className="inline-flex items-center gap-1 rounded-lg bg-[#070705]/85 backdrop-blur-md border border-slate-700/80 px-2.5 py-1 text-xs font-medium text-slate-100">
             <span>View Details</span>

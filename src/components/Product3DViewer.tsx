@@ -527,7 +527,7 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
 
   const frameClass =
     variant === 'card'
-      ? 'aspect-[4/3] w-full rounded-2xl border border-white/10 bg-gradient-to-b from-[#151518] via-[#0b0b0d] to-black'
+      ? 'h-full w-full bg-gradient-to-b from-[#151518] via-[#0b0b0d] to-black'
       : 'aspect-square w-full rounded-3xl border border-white/10 bg-gradient-to-b from-[#17171b] via-[#0b0b0d] to-black';
 
   const fallbackReason =
@@ -554,7 +554,9 @@ export function Product3DViewer({ product, variant = 'detail', className = '' }:
         ) : (
           <Box className="h-8 w-8 text-gold-400" aria-hidden="true" />
         )}
-        <p className="text-[11px] leading-relaxed text-slate-400">{fallbackReason}</p>
+        {variant === 'detail' && (
+          <p className="text-[11px] leading-relaxed text-slate-400">{fallbackReason}</p>
+        )}
       </div>
     );
   }
