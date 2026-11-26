@@ -4,17 +4,17 @@ import { AlertTriangle, ChevronRight, Package, X } from 'lucide-react';
 import { cn } from '../../lib/utils.ts';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 rounded-lg text-sm font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060B16] disabled:pointer-events-none disabled:opacity-45 whitespace-nowrap shrink-0 cursor-pointer active:scale-[0.99]',
+  'inline-flex items-center justify-center gap-2 rounded-lg text-sm font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070705] disabled:pointer-events-none disabled:opacity-45 whitespace-nowrap shrink-0 cursor-pointer active:scale-[0.99]',
   {
     variants: {
       variant: {
         primary:
-          'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-[0_6px_22px_-6px_rgba(56,189,248,0.55)] hover:from-sky-400 hover:to-blue-500',
+          'bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 text-[#0B0A08] shadow-[0_8px_26px_-8px_rgba(201,162,39,0.6)] hover:from-gold-200 hover:via-gold-300 hover:to-gold-400',
         accent:
-          'bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-[0_6px_22px_-6px_rgba(139,92,246,0.5)] hover:from-blue-500 hover:to-violet-500',
+          'bg-gradient-to-r from-bronze-400 via-bronze-500 to-bronze-600 text-[#FAF7F2] shadow-[0_8px_26px_-8px_rgba(154,118,63,0.55)] hover:from-bronze-300 hover:via-bronze-400 hover:to-bronze-500',
         outline:
-          'border border-slate-700/90 bg-[#0B1222]/90 text-slate-100 hover:bg-[#131F38] hover:border-slate-500',
-        ghost: 'text-slate-300 hover:bg-slate-800/70 hover:text-white',
+          'border border-gold-600/45 bg-[#0F0E0B]/90 text-gold-100 hover:bg-[#1C1913] hover:border-gold-500/70 hover:text-gold-50',
+        ghost: 'text-slate-300 hover:bg-[#1C1913] hover:text-gold-200',
         danger: 'bg-red-600/90 text-white hover:bg-red-500 shadow-sm',
       },
       size: {
@@ -49,7 +49,7 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-xl border border-slate-800/90 bg-[#0B1222] text-slate-100 shadow-[0_14px_34px_-20px_rgba(2,6,23,0.9)]',
+        'rounded-xl border border-gold-600/20 bg-[#0F0E0B] text-slate-100 shadow-[0_16px_38px_-22px_rgba(0,0,0,0.95)]',
         className
       )}
       {...props}
@@ -66,7 +66,7 @@ export const Input = React.forwardRef<
   <input
     ref={ref}
     className={cn(
-      'flex h-10 w-full rounded-lg border border-slate-700/80 bg-[#070D1A] px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-sky-400/60 disabled:cursor-not-allowed disabled:opacity-50',
+      'flex h-10 w-full rounded-lg border border-gold-700/35 bg-[#0B0A08] px-3.5 py-2 text-sm text-slate-100 placeholder:text-slate-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:border-gold-400/70 disabled:cursor-not-allowed disabled:opacity-50',
       className
     )}
     {...props}
@@ -81,7 +81,7 @@ export const Select = React.forwardRef<
   <select
     ref={ref}
     className={cn(
-      'flex h-10 w-full rounded-lg border border-slate-700/80 bg-[#070D1A] px-3 py-2 text-sm text-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:border-sky-400/60 disabled:cursor-not-allowed disabled:opacity-50',
+      'flex h-10 w-full rounded-lg border border-gold-700/35 bg-[#0B0A08] px-3 py-2 text-sm text-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:border-gold-400/70 disabled:cursor-not-allowed disabled:opacity-50',
       className
     )}
     {...props}
@@ -110,7 +110,7 @@ export function Skeleton({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'animate-pulse rounded-xl bg-gradient-to-r from-[#0B1222] via-[#131F38] to-[#0B1222] border border-slate-800/60',
+        'animate-pulse rounded-xl bg-gradient-to-r from-[#0F0E0B] via-[#1C1913] to-[#0F0E0B] border border-gold-800/30',
         className
       )}
     />
@@ -132,12 +132,12 @@ export function ProductImage({
     return (
       <div
         className={cn(
-          'flex flex-col items-center justify-center bg-gradient-to-br from-[#0F182D] to-[#070C18] text-slate-400 p-4 text-center',
+          'flex flex-col items-center justify-center bg-gradient-to-br from-[#14120E] to-[#090807] text-slate-400 p-4 text-center',
           className
         )}
         aria-label={alt}
       >
-        <Package className="h-8 w-8 text-sky-400/70 mb-2" />
+        <Package className="h-8 w-8 text-gold-400/70 mb-2" />
         <span className="text-xs font-medium text-slate-300 line-clamp-2 max-w-[180px]">{alt}</span>
       </div>
     );
@@ -173,7 +173,7 @@ export function Breadcrumbs({
               <button
                 type="button"
                 onClick={() => navigate(item.to!)}
-                className="hover:text-sky-400 transition-colors cursor-pointer"
+                className="hover:text-gold-300 transition-colors cursor-pointer"
               >
                 {item.label}
               </button>
@@ -214,7 +214,7 @@ export function ConfirmDialog({
       aria-labelledby="confirm-dialog-title"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4"
     >
-      <div className="w-full max-w-md rounded-2xl border border-slate-700/80 bg-[#0B1222] p-6 shadow-2xl space-y-4">
+      <div className="w-full max-w-md rounded-2xl border border-gold-600/30 bg-[#0F0E0B] p-6 shadow-2xl space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             <div
@@ -222,7 +222,7 @@ export function ConfirmDialog({
                 'flex h-10 w-10 items-center justify-center rounded-xl border',
                 destructive
                   ? 'border-red-500/30 bg-red-500/10 text-red-400'
-                  : 'border-sky-500/30 bg-sky-500/10 text-sky-400'
+                  : 'border-gold-500/30 bg-gold-500/10 text-gold-300'
               )}
             >
               <AlertTriangle className="h-5 w-5" />

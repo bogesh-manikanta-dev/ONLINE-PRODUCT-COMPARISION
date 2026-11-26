@@ -32,7 +32,7 @@ export function CompareXLogo({
   }[size];
 
   const textColor = variant === 'light' ? 'text-slate-950' : 'text-white';
-  const subColor = variant === 'light' ? 'text-sky-600' : 'text-sky-400';
+  const subColor = variant === 'light' ? 'text-gold-700' : 'text-gold-300';
 
   return (
     <span className={`inline-flex items-center gap-2.5 select-none ${className}`}>
@@ -40,13 +40,13 @@ export function CompareXLogo({
         className={`relative flex items-center justify-center rounded-xl ${iconSizes} ${
           variant === 'light'
             ? 'bg-slate-950 shadow-md'
-            : 'bg-gradient-to-br from-[#0F1B33] to-[#060B16] border border-sky-400/30 shadow-[0_0_24px_-6px_rgba(56,189,248,0.65)]'
+            : 'bg-gradient-to-br from-[#1C1913] to-[#070705] border border-gold-400/35 shadow-[0_0_24px_-6px_rgba(201,162,39,0.7)]'
         }`}
       >
         <svg viewBox="0 0 40 40" className="h-[72%] w-[72%]" fill="none" aria-hidden="true">
           <motion.path
             d="M10 10L19 20L10 30"
-            stroke="#38BDF8"
+            stroke="#D9B968"
             strokeWidth="3.6"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -56,7 +56,7 @@ export function CompareXLogo({
           />
           <motion.path
             d="M30 10L21 20L30 30"
-            stroke="#8B5CF6"
+            stroke="#B08A55"
             strokeWidth="3.6"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -68,7 +68,7 @@ export function CompareXLogo({
             cx="20"
             cy="20"
             r="2.4"
-            fill="#F8FAFC"
+            fill="#F7EECF"
             initial={shouldAnimate ? { scale: 0 } : false}
             animate={shouldAnimate ? { scale: 1 } : undefined}
             transition={{ duration: 0.3, delay: 0.35 }}
