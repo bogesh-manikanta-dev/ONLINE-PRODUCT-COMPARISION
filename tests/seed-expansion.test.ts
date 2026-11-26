@@ -62,6 +62,14 @@ for (const def of EXPANSION_SPEC_DEFS) {
   specKeysByCategory.get(def.categorySlug)!.add(def.key);
 }
 
+// Slugs of the products already shipped by the Phase 3 catalogue. Parsed from
+// the literal array so a new product can never silently upsert over an existing
+// record (the seeder upserts products by slug).
+const legacyProductSlugs = uniqueValues(
+  seedSource.slice(seedSource.indexOf('const phase3Products'), seedSource.indexOf('...EXPANSION_PRODUCTS')),
+  /^ {6}slug: '([^']+)'/gm,
+);
+
 describe('catalogue expansion — dataset shape', () => {
   it('adds between 14 and 20 products (additive only)', () => {
     expect(EXPANSION_PRODUCTS.length).toBeGreaterThanOrEqual(14);
@@ -78,8 +86,17 @@ describe('catalogue expansion — dataset shape', () => {
     }
   });
 
-  it('never fabricates ratings or customer reviews', () => {
+  it('does not collide with any product already in the catalogue', () => {
+    // The seeder upserts products by slug, so a collision would overwrite an
+    // existing row instead of adding a product.
+    expect(legacyProductSlugs.size, 'existing products must be preserved').toBeGreaterThanOrEqual(31);
     for (const product of EXPANSION_PRODUCTS) {
+      expect(legacyProductSlugs.has(product.slug), `${product.slug} collides with an existing product`).toBe(false);
+    }
+    expect(legacyProductSlugs.size + EXPANSION_PRODUCTS.length, 'total unique products').toBeGreaterThanOrEqual(45);
+  });
+
+  it('never fabricates ratings or customer reviews', () => {    for (const product of EXPANSION_PRODUCTS) {
       expect(product.rating, `${product.slug} rating`).toBe(0);
       expect(product.reviewCount, `${product.slug} reviewCount`).toBe(0);
     }
