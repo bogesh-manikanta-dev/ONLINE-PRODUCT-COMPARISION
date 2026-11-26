@@ -26,9 +26,9 @@ const seedSource = readFileSync(path.resolve(process.cwd(), 'src/db/seed.ts'), '
 /** Extracts the literal body of a top-level `const <anchor>` array in seed.ts. */
 function seedArrayBody(anchor: string): string {
   const start = seedSource.indexOf(anchor);
-  expect(start, `anchor "${anchor}" must exist in src/db/seed.ts`).toBeGreaterThan(-1);
+  if (start === -1) throw new Error(`anchor "${anchor}" is missing from src/db/seed.ts`);
   const end = seedSource.indexOf('];', start);
-  expect(end, `array for "${anchor}" must be terminated`).toBeGreaterThan(start);
+  if (end === -1) throw new Error(`array for "${anchor}" is not terminated in src/db/seed.ts`);
   return seedSource.slice(start, end);
 }
 
@@ -50,7 +50,7 @@ for (const match of seedArrayBody('const subInputs').matchAll(/cat:\s*'([^']+)'[
 for (const sub of EXPANSION_SUBCATEGORIES) subcategoryPairs.add(`${sub.cat}/${sub.slug}`);
 
 const specKeysByCategory = new Map<string, Set<string>>();
-for (const match of seedArrayBody('const specInputs').matchAll(
+for (const match of seedArrayBody('const specDefsInput').matchAll(
   /categorySlug:\s*'([^']+)',\s*key:\s*'([^']+)'/g,
 )) {
   const [, categorySlug, key] = match;
